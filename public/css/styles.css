@@ -132,11 +132,14 @@ ion-icon {
   border-radius: 50px;
   border: none;
   background-color: #cbcbcb;
-  color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.botao-pedido > p {
   text-align: center;
+  width: 200px;
+  color: #ffffff;
 }
 
 .desabilitado {
