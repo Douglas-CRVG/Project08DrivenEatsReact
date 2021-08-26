@@ -1,6 +1,6 @@
-import Header from './Header.js';
-import Main from './Main.js';
-import Footer from './Footer.js';
+import Header from './header/Header';
+import Main from './main/Main';
+import Footer from './footer/Footer';
 
 export default function App() {
     return (
