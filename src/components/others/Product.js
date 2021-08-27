@@ -1,7 +1,7 @@
 export default function Product(props) {
-    //const {product} = props.product;
-    //const {imgProduct, nameProduct, descriptionProduct, priceProduct } = product;
-    const {imgProduct, nameProduct, descriptionProduct, priceProduct } = props
+    console.log(props);
+    const {product} = props;
+    const {imgProduct, nameProduct, descriptionProduct, priceProduct } = product;
     return (
         <div className="itens margem-esq sobremesa">
             <img src={imgProduct} alt="" />
