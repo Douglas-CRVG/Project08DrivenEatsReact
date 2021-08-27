@@ -35,7 +35,7 @@ export default function Main() {
     ];
 
     return (
-        <main className="conteiner">
+        <main>
             <Menu menu={menu} />
         </main>
     );

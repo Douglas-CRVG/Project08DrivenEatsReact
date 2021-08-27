@@ -34,7 +34,7 @@ body {
   font-size: 18px;
 }
 
-.conteiner {
+main {
   margin-top: 123px;
   margin-bottom: 108px;
 }
@@ -49,6 +49,7 @@ body {
   margin-bottom: 27px;
   display: flex;
   background-color: #e5e5e5;
+  flex-direction: column;
   overflow-x: scroll;
 }
 
@@ -159,4 +160,9 @@ ion-icon {
   justify-content: center;
   align-items: center;
   text-decoration: none;
+}
+
+.conteiner {
+  display: flex;
+  margin: 17px 0px 27px 0px;
 }
