@@ -1,8 +1,8 @@
-import React, {useState} from 'react'
+import React, { useState } from "react";
 
 export default function Product(props) {
-    const {product} = props;
-    const {imgProduct, nameProduct, descriptionProduct, priceProduct } = product;
+    const { product } = props;
+    const { imgProduct, nameProduct, descriptionProduct, priceProduct } = product;
     const [select, setSelect] = useState("");
     const [coisa, setCoisa] = useState(false);
 
@@ -17,11 +17,16 @@ export default function Product(props) {
     }
 
     return (
-        <div className={`itens margem-esq ${select}`} onClick = {selecionar} >
-            <img src={imgProduct} alt="" />
-            <p className="produto">{nameProduct}</p>
-            <p className="descricao">{descriptionProduct}</p>
-            <p className="preco">R$ <strong>{priceProduct}</strong></p>
+        <div className={`item margem-esq ${select}`} onClick={selecionar}>
+            <div class="product">
+                <img src={imgProduct} alt="" />
+                <p className="name">{nameProduct}</p>
+                <p className="description">{descriptionProduct}</p>
+                <p className="price">R$ <strong>{priceProduct}</strong>
+                </p>
+            </div>
         </div>
-    )
+    );
 }
+
+
