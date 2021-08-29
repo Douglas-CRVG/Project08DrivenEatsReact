@@ -90,6 +90,7 @@ main {
   padding: 16px 14px 14px 14px;
   background-color: #ffffff;
   font-family: "Roboto", sans-serif;
+  position: relative;
 }
 
 img {
@@ -161,10 +162,6 @@ ion-icon {
   color: #ffffff;
 }
 
-.desabilitado {
-  display: none;
-}
-
 .fechar-pedido {
   width: 87.922%;
   height: 61px;
@@ -192,4 +189,31 @@ ion-icon {
   background: #50d074;
   border-radius: 9px;
   box-shadow: 0px 0px 10px -4px rgba(0, 0, 0, 0.25);
+  position: relative;
+}
+
+.container-counter {
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 47px;
+  height: 19px;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  position: absolute;
+  right: 11px;
+  bottom: 24px;
+}
+
+.container-counter :nth-child(1) {
+  color: red;
+}
+
+.container-counter :nth-child(2) {
+  color: #50d074;
+}
+
+.desabilitado {
+  display: none;
 }
