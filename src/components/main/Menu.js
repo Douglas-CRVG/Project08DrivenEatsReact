@@ -1,7 +1,8 @@
 import Product from "../others/Product";
 
 export default function Menu(props) {
-    const {menu} = props;
+
+    const {menu, count, setCount} = props;
 
     return (
         <>
@@ -12,10 +13,10 @@ export default function Menu(props) {
                 } = categorie;
 
                 return (
-                    <div key={index} className="scroll">
+                    <div key={index}>
                         <div className="top-scroll margem-esq">{title}</div>
-                        <div className = "conteiner">
-                            {products.map((product, index) => <Product key={index} product={product} />)}
+                        <div key={index} className="scroll">
+                            {products.map((product, index) => <Product key={index} product={product} count={count} setCount = {setCount} />)}
                         </div>
                     </div>
                 )

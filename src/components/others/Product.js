@@ -1,38 +1,38 @@
 import React, { useState } from "react";
 
 
-
 export default function Product(props) {
-    const { product } = props;
+    const { product, count, setCount } = props;
     const { type, imgProduct, nameProduct, descriptionProduct, priceProduct } = product;
     const [select, setSelect] = useState("");
     const [hidden, setHidden] = useState("desabilitado");
-    const [counter, setCounter] = useState(1);
-
-    let countDish = 0;
-    let countDrink = 0;
-    let countDessert = 0;
+    const [counter, setCounter] = useState(0);
 
     function selecionar(type) {
         if (select === "") {
+            activateButton(type, true);
             setSelect("select");
             setHidden("")
-            activateButton(type, true);
+            setCounter(counter + 1)
+
         } else {
+            activateButton(type, false);
             setSelect("");
             setHidden("desabilitado")
-            activateButton(type, false);
+            setCounter(0);
         }
     }
 
-    function quantity(what) {
+    function quantity(what, e) {
+        e.stopPropagation();
         if (what === "add") {
             setCounter(counter + 1);
+            console.log(counter);
         } else {
             setCounter(counter - 1);
         }
-        
-        if (counter < 2) {
+
+        if (counter <= 1 && what === "sub") {
             setSelect("");
             setHidden("desabilitado");
         }
@@ -40,41 +40,45 @@ export default function Product(props) {
 
     function activateButton(type, bool) {
         if (bool === true) {
+
             if (type === "dish") {
-                countDish++;
+                count.dish++;
             } else if (type === "drink") {
-                countDrink++;
+                count.drink++;
             } else if (type === "dessert") {
-                countDessert++;
+                count.dessert++;
             }
+            console.log(count);
         } else {
             if (type === "dish") {
-                countDish--;
+                count.dish--;
             } else if (type === "drink") {
-                countDrink--;
+                count.drink--;
             } else if (type === "dessert") {
-                countDessert--;
+                count.dessert--;
             }
         }
-    
-        console.log(countDish);
-        console.log(countDessert);
-        console.log(countDrink);
+
+        setCount(count);
+
+        console.log(bool)
+        console.log(type)
     }
 
     return (
         <div className={`item margem-esq ${select}`} >
-            <div className="product" onClick={() => selecionar({ type })}>
+            <div className="product" onClick={() => selecionar(type)}>
                 <img src={imgProduct} alt="" />
                 <p className="name">{nameProduct}</p>
                 <p className="description">{descriptionProduct}</p>
                 <p className="price">R$ <strong>{priceProduct}</strong></p>
             </div>
             <div className={`container-counter ${hidden}`}>
-                <ion-icon onClick={() => quantity("sub")} name="remove-outline"></ion-icon>
+                <ion-icon onClick={(e) => quantity("sub", e)} name="remove-outline"></ion-icon>
                 {counter}
-                <ion-icon onClick={() => quantity("add")} name="add-outline"></ion-icon>
+                <ion-icon onClick={(e) => quantity("add", e)} name="add-outline"></ion-icon>
             </div>
+
         </div>
     );
 }
