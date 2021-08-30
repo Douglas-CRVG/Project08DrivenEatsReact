@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-
 export default function Product(props) {
     const { product, count, setCount } = props;
     const { type, imgProduct, nameProduct, descriptionProduct, priceProduct } = product;

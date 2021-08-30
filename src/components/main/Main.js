@@ -1,6 +1,3 @@
-/*import MenuFood from './MenuFood'
-import MenuDrink from './MenuDrink'
-import MenuDessert from './MenuDessert'*/
 import Menu from './Menu'
 import React, {useState} from 'react';
 import Footer from './footer/Footer';
