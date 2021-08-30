@@ -1,19 +1,27 @@
 import React, { useState } from "react";
 
+
+
 export default function Product(props) {
     const { product } = props;
-    const { imgProduct, nameProduct, descriptionProduct, priceProduct } = product;
+    const { type, imgProduct, nameProduct, descriptionProduct, priceProduct } = product;
     const [select, setSelect] = useState("");
     const [hidden, setHidden] = useState("desabilitado");
     const [counter, setCounter] = useState(1);
 
-    function selecionar() {
+    let countDish = 0;
+    let countDrink = 0;
+    let countDessert = 0;
+
+    function selecionar(type) {
         if (select === "") {
             setSelect("select");
             setHidden("")
+            activateButton(type, true);
         } else {
             setSelect("");
             setHidden("desabilitado")
+            activateButton(type, false);
         }
     }
 
@@ -23,22 +31,46 @@ export default function Product(props) {
         } else {
             setCounter(counter - 1);
         }
-
+        
         if (counter < 2) {
             setSelect("");
             setHidden("desabilitado");
         }
     }
 
+    function activateButton(type, bool) {
+        if (bool === true) {
+            if (type === "dish") {
+                countDish++;
+            } else if (type === "drink") {
+                countDrink++;
+            } else if (type === "dessert") {
+                countDessert++;
+            }
+        } else {
+            if (type === "dish") {
+                countDish--;
+            } else if (type === "drink") {
+                countDrink--;
+            } else if (type === "dessert") {
+                countDessert--;
+            }
+        }
+    
+        console.log(countDish);
+        console.log(countDessert);
+        console.log(countDrink);
+    }
+
     return (
         <div className={`item margem-esq ${select}`} >
-            <div class="product" onClick={selecionar}>
+            <div className="product" onClick={() => selecionar({ type })}>
                 <img src={imgProduct} alt="" />
                 <p className="name">{nameProduct}</p>
                 <p className="description">{descriptionProduct}</p>
                 <p className="price">R$ <strong>{priceProduct}</strong></p>
             </div>
-            <div class={`container-counter ${hidden}`}>
+            <div className={`container-counter ${hidden}`}>
                 <ion-icon onClick={() => quantity("sub")} name="remove-outline"></ion-icon>
                 {counter}
                 <ion-icon onClick={() => quantity("add")} name="add-outline"></ion-icon>
